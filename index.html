@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes de Precios - Agentes Virtuales AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .plan {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan.popular {
+            border: 3px solid #667eea;
+            transform: scale(1.05);
+        }
+
+        .plan.popular::before {
+            content: "Más Popular";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .plan-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price .currency {
+            font-size: 1.5rem;
+            vertical-align: top;
+        }
+
+        .plan-price .period {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .plan-billing {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .plan-features .feature-highlight {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .plan-features .feature-muted {
+            color: #999;
+        }
+
+        .plan-button {
+            width: 100%;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+        }
+
+        .plan-button.primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .plan-button.secondary {
+            background: #f8f9fa;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .plan-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .free-plan {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .enterprise-plan {
+            background: linear-gradient(135deg, #343a40, #495057);
+            color: white;
+        }
+
+        .enterprise-plan .plan-name,
+        .enterprise-plan .plan-description {
+            color: white;
+        }
+
+        .enterprise-plan .plan-features li {
+            border-bottom-color: #495057;
+        }
+
+        .usage-info {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .usage-info h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .usage-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .usage-table th,
+        .usage-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .usage-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .pricing-note {
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            padding: 1rem 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .pricing-note strong {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .plan {
+                padding: 1.5rem;
+            }
+
+            .plan-price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Planes de Precios</h1>
+            <p>Potencia tu atención al cliente con agentes virtuales multicanal inteligentes</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Plan FREE -->
+            <div class="plan free-plan">
+                <div class="plan-header">
+                    <h3 class="plan-name">FREE</h3>
+                    <p class="plan-description">Perfecto para probar nuestra plataforma</p>
+                    <div class="plan-price">
+                        <span class="currency">$</span>0
+                        <span class="period">/ mes</span>
+                    </div>
+                    <p class="plan-billing">Sin tarjeta de crédito</p>
+                </div>
+                <ul class="plan-features">
+                    <li>1 agente virtual</li>
+                    <li>1 widget web</li>
+                    <li>100 mensajes/mes</li>
+                    <li>Base de conocimiento básica (5 documentos)</li>
+                    <li>Analytics básicos</li>
+                    <li>Soporte por documentación</li>
+                    <li class="feature-muted">Solo canal web</li>
+                    <li class="feature-muted">Sin integraciones</li>
+                </ul>
+                <a href="#" class="plan-button secondary">Comenzar Gratis</a>
+            </div>
+
+            <!-- Plan STARTER -->
+            <div class="plan">
+                <div class="plan-header">
+                    <h3 class="plan-name">STARTER</h3>
+                    <p class="plan-description">Ideal para pequeñas empresas y startups</p>
+                    <div class="plan-price">
+                        <span class="currency">$</span>69
+                        <span class="period">/ mes</span>
+                    </div>
+                    <p class="plan-billing">Facturación mensual</p>
+                </div>
+                <ul class="plan-features">
+                    <li>3 agentes virtuales</li>
+                    <li>3 widgets web</li>
+                    <li><span class="feature-highlight">1,000 mensajes/mes incluidos</span></li>
+                    <li>1 cuenta WhatsApp</li>
+                    <li>1 cuenta Instagram</li>
+                    <li>Base de conocimiento (25 documentos)</li>
+                    <li>Crawling web básico</li>
+                    <li>FAQs ilimitadas</li>
+                    <li>Analytics y reportes estándar</li>
+                    <li>Tags básicos para conversaciones</li>
+                    <li>Soporte por email</li>
+                </ul>
+                <a href="#" class="plan-button primary">Comenzar Ahora</a>
+            </div>
+
+            <!-- Plan PROFESSIONAL -->
+            <div class="plan popular">
+                <div class="plan-header">
+                    <h3 class="plan-name">PROFESSIONAL</h3>
+                    <p class="plan-description">Para empresas en crecimiento que necesitan más poder</p>
+                    <div class="plan-price">
+                        <span class="currency">$</span>189
+                        <span class="period">/ mes</span>
+                    </div>
+                    <p class="plan-billing">Facturación mensual</p>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="feature-highlight">10 agentes virtuales</span></li>
+                    <li>Widgets ilimitados</li>
+                    <li><span class="feature-highlight">5,000 mensajes/mes incluidos</span></li>
+                    <li><span class="feature-highlight">500 minutos de voz/mes incluidos</span></li>
+                    <li>5 cuentas WhatsApp</li>
+                    <li>5 cuentas Instagram</li>
+                    <li>Base de conocimiento avanzada (100 documentos)</li>
+                    <li>Crawling web avanzado</li>
+                    <li>Campañas WhatsApp proactivas</li>
+                    <li>Llamadas salientes de voz</li>
+                    <li>Social listening (3 topics)</li>
+                    <li>Analytics avanzados por agente/canal/idioma</li>
+                    <li>Tags avanzados y filtros</li>
+                    <li>Live chat para agentes humanos</li>
+                    <li>Transferencia por departamento/idioma</li>
+                    <li>API para campañas</li>
+                    <li>Soporte prioritario por chat</li>
+                </ul>
+                <a href="#" class="plan-button primary">Empezar Professional</a>
+            </div>
+
+            <!-- Plan ENTERPRISE -->
+            <div class="plan enterprise-plan">
+                <div class="plan-header">
+                    <h3 class="plan-name">ENTERPRISE</h3>
+                    <p class="plan-description">Solución completa para empresas grandes con necesidades específicas</p>
+                    <div class="plan-price">
+                        Personalizado
+                    </div>
+                    <p class="plan-billing">Contáctanos para una cotización</p>
+                </div>
+                <ul class="plan-features">
+                    <li>Agentes virtuales ilimitados</li>
+                    <li>Mensajes y minutos según necesidad</li>
+                    <li>Cuentas multicanal ilimitadas</li>
+                    <li>Base de conocimiento empresarial</li>
+                    <li>Social listening personalizado</li>
+                    <li>Analytics customizados</li>
+                    <li>Integraciones personalizadas</li>
+                    <li>MCP con guardrails customizados</li>
+                    <li>Configuraciones por región/mercado</li>
+                    <li>Onboarding dedicado</li>
+                    <li>Gerente de cuenta asignado</li>
+                    <li>SLA personalizado</li>
+                    <li>Soporte 24/7 prioritario</li>
+                    <li>Consultoría estratégica</li>
+                </ul>
+                <a href="#" class="plan-button secondary">Contactar Ventas</a>
+            </div>
+        </div>
+
+        <div class="usage-info">
+            <h3>💰 Modelo de Precios por Uso</h3>
+            <p>Después de agotar los mensajes/minutos incluidos en tu plan, aplican las siguientes tarifas:</p>
+
+            <table class="usage-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Precio Base</th>
+                        <th>Descuentos por Volumen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Mensajes adicionales</strong><br><small>Web, WhatsApp, Instagram</small></td>
+                        <td>$0.07 por mensaje</td>
+                        <td>
+                            • 1,000+ mensajes: $0.06<br>
+                            • 5,000+ mensajes: $0.05<br>
+                            • 10,000+ mensajes: $0.04
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minutos de voz</strong><br><small>Llamadas entrantes/salientes</small></td>
+                        <td>$0.21 por minuto</td>
+                        <td>
+                            • 1,000+ minutos: $0.18<br>
+                            • 3,000+ minutos: $0.15<br>
+                            • 5,000+ minutos: $0.12
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pricing-note">
+                <p><strong>Nota importante:</strong> Los costos de WhatsApp Business API son facturados directamente por
+                    Meta. Los precios varían por país (~$0.005-$0.015 por mensaje). Nuestros precios son solo por el
+                    procesamiento y funcionalidades de la plataforma.</p>
+            </div>
+
+            <div class="pricing-note">
+                <p><strong>🎯 Incluido en todos los planes:</strong> Documentación completa, chat de asistencia,
+                    actualizaciones automáticas, seguridad empresarial, y acceso a todas las funcionalidades principales
+                    de multicanalidad y analytics.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
