@@ -44,9 +44,28 @@
             margin: 0 auto;
         }
 
+        .competitive-advantage {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .competitive-advantage h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .competitive-advantage p {
+            opacity: 0.9;
+        }
+
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -155,6 +174,11 @@
             font-weight: 600;
         }
 
+        .plan-features .feature-new {
+            color: #28a745;
+            font-weight: 600;
+        }
+
         .plan-features .feature-muted {
             color: #999;
         }
@@ -207,15 +231,19 @@
             border-bottom-color: #495057;
         }
 
-        .usage-info {
+        .token-info,
+        .usage-info,
+        .crawling-info {
             background: white;
             border-radius: 15px;
             padding: 2rem;
-            margin-top: 3rem;
+            margin-bottom: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .usage-info h3 {
+        .token-info h3,
+        .usage-info h3,
+        .crawling-info h3 {
             color: #667eea;
             margin-bottom: 1rem;
             font-size: 1.5rem;
@@ -252,6 +280,37 @@
             color: #667eea;
         }
 
+        .token-calculator {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .token-calculator h4 {
+            color: #495057;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .comparison-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .comparison-item h5 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -272,7 +331,13 @@
     <div class="container">
         <div class="header">
             <h1>Planes de Precios</h1>
-            <p>Potencia tu atención al cliente con agentes virtuales multicanal inteligentes</p>
+            <p>Agentes virtuales multicanal con IA - Modelo escalable por tokens y uso real</p>
+        </div>
+
+        <div class="competitive-advantage">
+            <h3>🚀 Ventaja Competitiva Única</h3>
+            <p><strong>WhatsApp, Instagram y Facebook incluidos desde el plan FREE</strong> - Mientras la competencia
+                los cobra extra, tú tendrás acceso completo a todos los canales sociales desde el primer día</p>
         </div>
 
         <div class="pricing-grid">
@@ -280,7 +345,7 @@
             <div class="plan free-plan">
                 <div class="plan-header">
                     <h3 class="plan-name">FREE</h3>
-                    <p class="plan-description">Perfecto para probar nuestra plataforma</p>
+                    <p class="plan-description">Perfecto para probar nuestra plataforma completa</p>
                     <div class="plan-price">
                         <span class="currency">$</span>0
                         <span class="period">/ mes</span>
@@ -288,14 +353,17 @@
                     <p class="plan-billing">Sin tarjeta de crédito</p>
                 </div>
                 <ul class="plan-features">
-                    <li>1 agente virtual</li>
+                    <li><span class="feature-highlight">2 agentes virtuales</span></li>
+                    <li><span class="feature-new">WhatsApp + Instagram + Facebook incluidos</span></li>
                     <li>1 widget web</li>
-                    <li>100 mensajes/mes</li>
-                    <li>Base de conocimiento básica (5 documentos)</li>
+                    <li><span class="feature-highlight">2,000 mensajes/mes</span></li>
+                    <li><span class="feature-highlight">50K tokens de knowledge base</span></li>
+                    <li>Web crawling: 5 URLs, 10MB</li>
                     <li>Analytics básicos</li>
-                    <li>Soporte por documentación</li>
-                    <li class="feature-muted">Solo canal web</li>
-                    <li class="feature-muted">Sin integraciones</li>
+                    <li>Tags básicos</li>
+                    <li>Soporte por documentación + chat</li>
+                    <li class="feature-muted">Sin campañas proactivas</li>
+                    <li class="feature-muted">Sin voz</li>
                 </ul>
                 <a href="#" class="plan-button secondary">Comenzar Gratis</a>
             </div>
@@ -304,25 +372,28 @@
             <div class="plan">
                 <div class="plan-header">
                     <h3 class="plan-name">STARTER</h3>
-                    <p class="plan-description">Ideal para pequeñas empresas y startups</p>
+                    <p class="plan-description">Ideal para pequeñas empresas que quieren crecer</p>
                     <div class="plan-price">
-                        <span class="currency">$</span>69
+                        <span class="currency">$</span>79
                         <span class="period">/ mes</span>
                     </div>
                     <p class="plan-billing">Facturación mensual</p>
                 </div>
                 <ul class="plan-features">
-                    <li>3 agentes virtuales</li>
-                    <li>3 widgets web</li>
-                    <li><span class="feature-highlight">1,000 mensajes/mes incluidos</span></li>
-                    <li>1 cuenta WhatsApp</li>
-                    <li>1 cuenta Instagram</li>
-                    <li>Base de conocimiento (25 documentos)</li>
-                    <li>Crawling web básico</li>
+                    <li><span class="feature-highlight">5 agentes virtuales</span></li>
+                    <li>Todos los canales: WhatsApp, IG, FB, Web</li>
+                    <li>5 widgets web</li>
+                    <li><span class="feature-highlight">10,000 mensajes/mes incluidos</span></li>
+                    <li><span class="feature-highlight">500K tokens knowledge base</span></li>
+                    <li>Web crawling: 50 URLs, 100MB</li>
+                    <li>3 cuentas WhatsApp</li>
+                    <li>3 cuentas Instagram</li>
                     <li>FAQs ilimitadas</li>
-                    <li>Analytics y reportes estándar</li>
-                    <li>Tags básicos para conversaciones</li>
-                    <li>Soporte por email</li>
+                    <li>Analytics por canal/agente</li>
+                    <li>Tags avanzados + filtros</li>
+                    <li>Campañas WhatsApp básicas</li>
+                    <li>API para integraciones</li>
+                    <li>Soporte prioritario</li>
                 </ul>
                 <a href="#" class="plan-button primary">Comenzar Ahora</a>
             </div>
@@ -331,31 +402,31 @@
             <div class="plan popular">
                 <div class="plan-header">
                     <h3 class="plan-name">PROFESSIONAL</h3>
-                    <p class="plan-description">Para empresas en crecimiento que necesitan más poder</p>
+                    <p class="plan-description">Solución completa para empresas en crecimiento acelerado</p>
                     <div class="plan-price">
-                        <span class="currency">$</span>189
+                        <span class="currency">$</span>229
                         <span class="period">/ mes</span>
                     </div>
                     <p class="plan-billing">Facturación mensual</p>
                 </div>
                 <ul class="plan-features">
-                    <li><span class="feature-highlight">10 agentes virtuales</span></li>
+                    <li><span class="feature-highlight">15 agentes virtuales</span></li>
                     <li>Widgets ilimitados</li>
-                    <li><span class="feature-highlight">5,000 mensajes/mes incluidos</span></li>
-                    <li><span class="feature-highlight">500 minutos de voz/mes incluidos</span></li>
-                    <li>5 cuentas WhatsApp</li>
-                    <li>5 cuentas Instagram</li>
-                    <li>Base de conocimiento avanzada (100 documentos)</li>
-                    <li>Crawling web avanzado</li>
-                    <li>Campañas WhatsApp proactivas</li>
+                    <li><span class="feature-highlight">50,000 mensajes/mes incluidos</span></li>
+                    <li><span class="feature-highlight">1,000 minutos de voz/mes incluidos</span></li>
+                    <li><span class="feature-highlight">2M tokens knowledge base</span></li>
+                    <li>Web crawling: 500 URLs, 1GB</li>
+                    <li>10 cuentas WhatsApp</li>
+                    <li>10 cuentas Instagram</li>
+                    <li>Campañas avanzadas + automaciones</li>
                     <li>Llamadas salientes de voz</li>
-                    <li>Social listening (3 topics)</li>
-                    <li>Analytics avanzados por agente/canal/idioma</li>
-                    <li>Tags avanzados y filtros</li>
-                    <li>Live chat para agentes humanos</li>
-                    <li>Transferencia por departamento/idioma</li>
-                    <li>API para campañas</li>
-                    <li>Soporte prioritario por chat</li>
+                    <li>Social listening (5 topics)</li>
+                    <li>Analytics avanzados + dashboards</li>
+                    <li>Live chat con transferencia inteligente</li>
+                    <li>MCP con guardrails</li>
+                    <li>API completa para campañas</li>
+                    <li>Integraciones CRM</li>
+                    <li>Soporte 24/7</li>
                 </ul>
                 <a href="#" class="plan-button primary">Empezar Professional</a>
             </div>
@@ -364,35 +435,113 @@
             <div class="plan enterprise-plan">
                 <div class="plan-header">
                     <h3 class="plan-name">ENTERPRISE</h3>
-                    <p class="plan-description">Solución completa para empresas grandes con necesidades específicas</p>
+                    <p class="plan-description">Solución enterprise con implementación personalizada</p>
                     <div class="plan-price">
                         Personalizado
                     </div>
-                    <p class="plan-billing">Contáctanos para una cotización</p>
+                    <p class="plan-billing">Contáctanos para cotización</p>
                 </div>
                 <ul class="plan-features">
                     <li>Agentes virtuales ilimitados</li>
-                    <li>Mensajes y minutos según necesidad</li>
+                    <li>Tokens y mensajes según necesidad</li>
+                    <li>Web crawling personalizado</li>
                     <li>Cuentas multicanal ilimitadas</li>
-                    <li>Base de conocimiento empresarial</li>
-                    <li>Social listening personalizado</li>
-                    <li>Analytics customizados</li>
+                    <li>Social listening avanzado</li>
+                    <li>Analytics customizados + BI</li>
                     <li>Integraciones personalizadas</li>
-                    <li>MCP con guardrails customizados</li>
-                    <li>Configuraciones por región/mercado</li>
+                    <li>MCP enterprise con guardrails custom</li>
+                    <li>Multi-región deployment</li>
+                    <li>White-label disponible</li>
                     <li>Onboarding dedicado</li>
                     <li>Gerente de cuenta asignado</li>
                     <li>SLA personalizado</li>
-                    <li>Soporte 24/7 prioritario</li>
                     <li>Consultoría estratégica</li>
+                    <li>Soporte premium 24/7</li>
                 </ul>
                 <a href="#" class="plan-button secondary">Contactar Ventas</a>
             </div>
         </div>
 
+        <div class="token-info">
+            <h3>🧠 Modelo de Tokens de Knowledge Base</h3>
+            <p>Nuestro sistema de tokens es <strong>transparente y justo</strong> - pagas solo por lo que realmente
+                usas, independientemente del formato de tus datos.</p>
+
+            <div class="token-calculator">
+                <h4>Calculadora de Tokens</h4>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h5>📄 Documentos PDF</h5>
+                        <p>~1,000 tokens por página promedio</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h5>🌐 Páginas Web</h5>
+                        <p>~500-2,000 tokens por página</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h5>❓ FAQ</h5>
+                        <p>~50-200 tokens por pregunta/respuesta</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h5>📊 Excel/CSV</h5>
+                        <p>~50-100 tokens por fila de datos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-note">
+                <p><strong>Ventaja única:</strong> A diferencia de competidores que limitan "documentos", nuestro modelo
+                    de tokens te permite usar PDFs de 5 páginas o de 90 páginas - pagas solo por el contenido real
+                    procesado.</p>
+            </div>
+        </div>
+
+        <div class="crawling-info">
+            <h3>🕷️ Web Crawling Inteligente</h3>
+            <p>Nuestro sistema combina límites de URLs y datos para maximizar el valor extraído de tu sitio web.</p>
+
+            <table class="usage-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>URLs Máximas</th>
+                        <th>Datos Máximos</th>
+                        <th>Ideal Para</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Free</strong></td>
+                        <td>5 URLs</td>
+                        <td>10MB</td>
+                        <td>Landing pages, sitios pequeños</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Starter</strong></td>
+                        <td>50 URLs</td>
+                        <td>100MB</td>
+                        <td>Sitios corporativos medianos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Professional</strong></td>
+                        <td>500 URLs</td>
+                        <td>1GB</td>
+                        <td>E-commerce, sitios complejos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enterprise</strong></td>
+                        <td>Ilimitado</td>
+                        <td>Personalizado</td>
+                        <td>Ayuntamientos, grandes corporaciones</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <div class="usage-info">
-            <h3>💰 Modelo de Precios por Uso</h3>
-            <p>Después de agotar los mensajes/minutos incluidos en tu plan, aplican las siguientes tarifas:</p>
+            <h3>💰 Precios por Uso Adicional</h3>
+            <p>Cuando superes los límites incluidos en tu plan, nuestras tarifas escalables te garantizan el mejor
+                precio del mercado:</p>
 
             <table class="usage-table">
                 <thead>
@@ -404,36 +553,46 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Mensajes adicionales</strong><br><small>Web, WhatsApp, Instagram</small></td>
+                        <td><strong>Mensajes adicionales</strong><br><small>Todos los canales incluidos</small></td>
                         <td>$0.07 por mensaje</td>
                         <td>
-                            • 1,000+ mensajes: $0.06<br>
-                            • 5,000+ mensajes: $0.05<br>
-                            • 10,000+ mensajes: $0.04
+                            • 1,000+: $0.06<br>
+                            • 5,000+: $0.05<br>
+                            • 10,000+: $0.04<br>
+                            • 25,000+: $0.03
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>Minutos de voz</strong><br><small>Llamadas entrantes/salientes</small></td>
+                        <td><strong>Minutos de voz</strong><br><small>Llamadas in/out + transferencias</small></td>
                         <td>$0.21 por minuto</td>
                         <td>
-                            • 1,000+ minutos: $0.18<br>
-                            • 3,000+ minutos: $0.15<br>
-                            • 5,000+ minutos: $0.12
+                            • 1,000+: $0.18<br>
+                            • 3,000+: $0.15<br>
+                            • 5,000+: $0.12<br>
+                            • 10,000+: $0.09
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tokens knowledge base</strong><br><small>Por encima del límite del plan</small></td>
+                        <td>$2.00 por 100K tokens</td>
+                        <td>
+                            • 1M+: $1.50 por 100K<br>
+                            • 5M+: $1.00 por 100K<br>
+                            • 10M+: $0.75 por 100K
                         </td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="pricing-note">
-                <p><strong>Nota importante:</strong> Los costos de WhatsApp Business API son facturados directamente por
-                    Meta. Los precios varían por país (~$0.005-$0.015 por mensaje). Nuestros precios son solo por el
-                    procesamiento y funcionalidades de la plataforma.</p>
+                <p><strong>🎯 Costos externos no incluidos:</strong> WhatsApp Business API (~$0.005-$0.015/mensaje) y
+                    números de Twilio para voz son facturados directamente por Meta y Twilio respectivamente.</p>
             </div>
 
             <div class="pricing-note">
-                <p><strong>🎯 Incluido en todos los planes:</strong> Documentación completa, chat de asistencia,
-                    actualizaciones automáticas, seguridad empresarial, y acceso a todas las funcionalidades principales
-                    de multicanalidad y analytics.</p>
+                <p><strong>✨ Incluido en todos los planes:</strong> Documentación completa, chat de asistencia en vivo,
+                    actualizaciones automáticas, SSL y seguridad empresarial, todos los canales sociales, y acceso
+                    completo a analytics y social listening básico.</p>
             </div>
         </div>
     </div>
